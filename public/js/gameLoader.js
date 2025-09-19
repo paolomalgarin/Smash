@@ -106,7 +106,7 @@ function loadAllInternalGames() {
     // ⚠️ svantaggio enorme: blocca tutto il browser finché non risponde il server
 
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "/public/data/manifest/internalMapList.json", false); // false = sincrono
+    xhr.open("GET", "./public/data/manifest/internalMapList.json", false); // false = sincrono
     try {
         xhr.send();
         if (xhr.status >= 200 && xhr.status < 300) {
