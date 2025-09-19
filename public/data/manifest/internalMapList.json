@@ -1,5 +1,5 @@
 {
-    "pathToInternalLevels": ".//public/data/maps/",
+    "pathToInternalLevels": "./public/data/maps/",
     "list": [
         {
             "path": "testLevel.json",
