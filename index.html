@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smash</title>
+
+    <link rel="stylesheet" href="./public/css/style.css">
+</head>
+
+<body>
+    <h1 id="text-top"></h1>
+
+    <div id="game-root">
+        <main id="game">
+            <!-- hurtboxes x debug -->
+            <div id="player2-hurtbox" class="game-element hurtbox"></div>
+            <div id="player1-hurtbox" class="game-element hurtbox"></div>
+            <!-- hitboxes x debug -->
+            <div id="player1-hitbox" class="game-element hitbox"></div>
+            <div id="player2-hitbox" class="game-element hitbox"></div>
+
+            <div class="game-element entity" id="player1"></div>
+            <div class="game-element entity" id="player2"></div>
+        </main>
+    </div>
+
+    <div id="loading-backdrop" class="">LOADING...</div>
+    <div id="map-chooser" class="hidden"></div>
+    <div id="character-chooser" class="hidden">
+    </div>
+
+
+    <!-- scripts -->
+    <script type="module" src="./public/js/main.js"></script>
+</body>
+
+</html>
