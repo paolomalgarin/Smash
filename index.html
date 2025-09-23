@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smash</title>
+
+    <link rel="shortcut icon" href="./public/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./public/css/style.css">
+</head>
+
+<body>
+    <h1 id="text-top"></h1>
+
+    <div id="game-root">
+        <main id="game">
+            <!-- hurtboxes x debug -->
+            <div id="player2-hurtbox" class="game-element hurtbox"></div>
+            <div id="player1-hurtbox" class="game-element hurtbox"></div>
+            <!-- hitboxes x debug -->
+            <div id="player1-hitbox" class="game-element hitbox"></div>
+            <div id="player2-hitbox" class="game-element hitbox"></div>
+
+            <div class="game-element entity" id="player1"></div>
+            <div class="game-element entity" id="player2"></div>
+        </main>
+    </div>
+
+    <div id="loading-backdrop" class="">LOADING...</div>
+    <div id="map-chooser" class="hidden"></div>
+    <div id="character-chooser" class="hidden"></div>
+
+
+    <div id="player-info-container" class="hidden">
+        <div class="player-info p1">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABIpJREFUeJzlWrFOG0EQnYtC4c7IUuQOhTo0bkIHkkvKyGUOyWVKjL/iIJ9gCbt0TWnJdNC4ITURHbKEoHNBcSnQnMfrvd2d3dmzRZ5kgc/23r43szOzcwvwnyOp4iZXLxe5eu1099z73pLjRRcAJ5u1xsW1/qzDHgcJmsbzEcFLgDxfM8Aahq+XxZey1niFNJ28C1TBdOP5ivCZNROC4etl2UcrxAHWCTSyFJ77Q2dPoOOo5HG8rOU+HoW3ABpoiXOtrQMScxkrz3NIEncnkBJgZV2aLDGY1FjWp3ARlEMeQEaAgrwPqVCECAoA8Cnw/lby1Gqhk7WN55MFQgTYiOUHk9ratZA4E+QBm3B7kwfpCiQbvASgOd4GSZHoWOj+zeMjaB4feXuBtwe4ECubcOj96FhvJ3te4yFCg6ARkhOOQR7AQwCfdUYn3G0vuD8vHUsCXnUAd103shTeAILJ07GkEHUJILrthQh5HEsSlQhQJVx2qhQfToBN7AWcMDqbr7z/+ftLlPt8+/od/vy9c/5+JQKMzuZihHWlMEV/1slPd++c3SC6AJS8rlprZKlzYMMaQAesBrlVZ9QYYCMP8J7XbVYFMJMHAHia3hT/c2qVSoIgbZT0Z521ctgmAiVfNoZ6L1dEE0Bd9+iao7P5irU4kBhDRXQPoBYxTbzMC1TXlyQP4CmAVLNzG8AWwPcJjITlpK0PEHEJqHlfYuLS5AECBHBdBq55uawe6LYX0MhS9vxc4SVAWu+xloFNBFsxxBGh0kKIEwzLJuZaCbqI4NMe9y6F03ov4TRHAd4nqKY6zv6+217AQCPCzvVjER+y1pjlnUFPh1GAKtvjqoBqmzyt9xLOljhoCXBjQUyk9V7iMx+RNFhVYWSzvg+CBKAxYJPVYYgnWn+Y5zkc7B/C/cNtcU09/aEiRjwwWV8VQPx8QH/WydUTIaazACFBUXf8xZb+VANxYJVKdygJwG7lUBEQOvLP/eHaMZusNU5QBI4HGL9JyXPJSJwF0G2PkTx9ry4F0TTo4oI6YOWWtcas4DiY1IqXCpU8ABT38EXUpiit3LLWsqWlg6klhg2RGJui6F1hLHVVIVzIIPHm8RE8TW9g5/oRAGDlwShe84WzAINJTVu3o+VsNb0qhKnDi8DG59vJHsB02Q9owrIh+jS9CYozzkEQLVYQUXp16uc2uLTCKZSIX1zX1QJiWQBgPQ02iAV1x1+loz7ClFFCCiGnb9IHDSrR093z5OrlIpfaEZaJgALo9vrqE2HxSpCe1KYkQ468bwtYWaAKwt32gh0fQuC1G+QeQthmfLgDElx4CXCwfyg9jwLqQYrY8BLAd+vpAlrxISQ6P2XYuiXQn3VKzwCOzuZJnuegvkLgLYA6AamWmCkDbNWjMQpMj6EilG2B0f3vH24hSZLiJQGxJRDSmDTt/2nHB2CZgqVS8cZjgOP5oCRW4A0WAFMi/uUsA9PBJ2r96Y9fodMsRbAAaJn7h1vWMkDyusYITYOxnz5tZAm4kq8C0VpiLmu7arI6RBHgPQ7YW16mvF7V0+Z/EWfldHoWIVIAAAAASUVORK5CYII="
+                alt="player 1 icon" class="player-icon" id="player1-info-icon">
+            <span class="player-damage"><span id="player1-info-damage">100</span>%</span>
+        </div>
+        <div class="player-info p2">
+            <img src="" alt="player 2 icon" class="player-icon" id="player2-info-icon">
+            <span class="player-damage"><span id="player2-info-damage">100</span>%</span>
+        </div>
+    </div>
+
+
+    <!-- scripts -->
+    <script type="module" src="./public/js/main.js"></script>
+</body>
+
+</html>
