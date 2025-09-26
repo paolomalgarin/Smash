@@ -4,10 +4,13 @@ import { chooseCharactersFromMenu } from './characterLoader.js';
 import { processAttackHit, aabbOverlap } from "./collisionManager.js";
 import Player from "./classes/player.js";
 import Platform from "./classes/platform.js";
+import { loadAudio, manageAudio } from './audioManager.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
 
     // ========================================================== FASE DI LOADING ==========================================================
+    var audio = loadAudio();
+
     // Scelgo i personaggi da usare
     const charactersType = await chooseCharactersFromMenu();
 
@@ -41,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-
+    audio.background.play();
 
 
 
@@ -174,6 +177,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             });
             player2.onGround = onGround;
+
+
+            // ================== GESTIONE AUDIO E VISUALS ==================
+            manageAudio([player1, player2], audio);
 
             // gestione attacchi
             processAttackHit(player1, player2);

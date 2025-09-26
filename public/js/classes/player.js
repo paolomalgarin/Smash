@@ -269,7 +269,6 @@ export default class Player {
     // Attacco base: imposta startup/active/recovery e crea activeHitbox durante active
     // --- modifica: attack() ---
     attack(damage, knockback, hitboxCfg = {}, recoveryTime) {
-        console.log(this.timers.recovery);
         // se sta parando non lo lascio attaccate (e saltare o muovere) 
         if (this.guarding) return;
 
