@@ -87,6 +87,10 @@ function loadGame(game, characters) {
         },
         platforms: { objList: platforms, elmList: platformElements },
         blocks: { objList: blocks, elmList: blockElements },
+        gameDims: {
+            width: DEFAULT_DIMS[game.DIM].WORLD_WIDTH,
+            height: DEFAULT_DIMS[game.DIM].WORLD_HEIGHT,
+        }
     };
 }
 

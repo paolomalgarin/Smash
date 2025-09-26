@@ -91,11 +91,11 @@ export default class Platform {
             if (collision.direction === -1) {
                 // push left
                 player.x -= p;
-                player.vx = 0;
+                player.vx = player.vx / -5;
             } else {
                 // push right
                 player.x += p;
-                player.vx = 0;
+                player.vx = player.vx / -5;
             }
         }
 

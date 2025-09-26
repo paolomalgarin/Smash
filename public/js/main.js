@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         },
         platforms: { objList: platforms, elmList: platformElements },
         blocks: { objList: blocks, elmList: blockElements },
+        gameDims: gameDims,
     } = await chooseLevelFromMenu(charactersType);
 
     // mostriamo le info dei players
@@ -61,9 +62,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 break;
             case 'KeyG':
                 console.log('Special!');
-                // player1.special?.();
-                player1.resetToSpawn();
-                player2.resetToSpawn();
+                break;
+            case 'KeyE':
+                console.log('dodge!');
+                player1.dodge();
                 break;
 
             // jump in fondo per permettere attacchi verso l'altro senza saltare
@@ -198,6 +200,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             // aggiorno prevKeys alla fine del frame
             prevKeys = { ...keys };
 
+
+            // ================== GESTIONE CONSEGUENZE DEI GIOCATORI (ES. PERDERE UNA VITA) ==================
+            // gestisco l'uscita dall'arena
+            let isP1Out = isOutOfTheWorld(player1, gameDims);
+            let isP2Out = isOutOfTheWorld(player2, gameDims);
+            if (isP1Out || isP2Out) {
+                player1.resetToSpawn();
+                player2.resetToSpawn();
+            }
+
+
             requestAnimationFrame(gameLoop);
         }
         requestAnimationFrame((t) => { last = t; gameLoop(t); });
@@ -257,9 +270,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function getAttckByKeys(player, keys = { top: false, bottom: false }) {
     if (keys.top) {
-        player.attack?.(6, 80, { range: 40, anchor: 'top', width: 44, height: 36, offsetY: -20, offsetX: 0 }); //attacco alto / overhead
+        player.attack?.(7, 80, { range: 40, anchor: 'top', width: 44, height: 36, offsetY: -20, offsetX: 0 }, .4); //attacco alto / overhead
     } else if (keys.bottom) {
-        player.attack?.(10, 120, { range: 36, anchor: 'bottom', width: 56, height: 28, offsetY: 15, offsetX: 0 }); //attacco basso / sweep
+        player.attack?.(8, 180, { range: 36, anchor: 'bottom', width: 56, height: 28, offsetY: 15, offsetX: 0 }, .5); //attacco basso / sweep
     } else
-        player.attack?.(8, 180, { range: 48, anchor: 'center' });
+        player.attack?.(5, 100, { range: 48, anchor: 'center' }, .3);
+}
+
+function isOutOfTheWorld(player, gameDims) {
+    // definisco dove esce il player 
+    // orizzontalmente
+    let isOutLeft = player.x <= (gameDims.width * (-0.1));
+    let isOutRight = player.x >= (gameDims.width * 1.1);
+    let isOutHorizontally = isOutLeft || isOutRight;
+    // verticalmente
+    let isOutTop = player.y <= (gameDims.height * (-0.1));
+    let isOutBottom = player.y >= (gameDims.height * 1.1);
+    let isOutVertically = isOutTop || isOutBottom;
+
+    // ritorno solo se è fuori (per ora)
+    return isOutHorizontally || isOutVertically;
 }

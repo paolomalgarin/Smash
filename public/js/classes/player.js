@@ -268,7 +268,8 @@ export default class Player {
 
     // Attacco base: imposta startup/active/recovery e crea activeHitbox durante active
     // --- modifica: attack() ---
-    attack(damage, knockback, hitboxCfg = {}) {
+    attack(damage, knockback, hitboxCfg = {}, recoveryTime) {
+        console.log(this.timers.recovery);
         // se sta parando non lo lascio attaccate (e saltare o muovere) 
         if (this.guarding) return;
 
@@ -279,7 +280,7 @@ export default class Player {
         const α = 0.004;
         const startup = this.attackFrames.startupBase * (1 - this.reaction * α);
         const active = this.attackFrames.activeBase;
-        const recovery = this.attackFrames.recoveryBase * (1 - this.reaction * 0.003);
+        const recovery = recoveryTime ? recoveryTime : this.attackFrames.recoveryBase * (1 - this.reaction * 0.003);
 
         // AVVIO solo lo startup subito; metto active/recovery in coda
         this.timers.startup = Math.max(0.02, startup);
@@ -317,11 +318,7 @@ export default class Player {
     dodge() {
         if (this.timers.invuln > 0 || this.timers.hitstun > 0) return;
         this.timers.invuln = 0.32; // invulnerabile 0.32s
-        // scatto orizzontale:
-        const dashV = 520;
-        this.vx = this.facing * dashV;
-        // leggera spinta verticale per evitare rimbalzi su terreno
-        this.vy = Math.min(this.vy, -80);
+        this.timers.dodgeRecovery = 1;
     }
 
     // applyHit: chiamalo quando una hitbox rileva collisione con il tuo hurtbox
@@ -440,7 +437,7 @@ export default class Player {
 
         // fallback costruendo il path (utile se non hai precaricato e sai quanti frame ci sono)
         const idx = this.animationFrame;
-        return `./public/img/animations/${this.animationFolder}/${state}/frame${idx}.png`;
+        return `./public/img/animations/${this.animationFolder}/${state === 'AttackingRecovery' ? 'Idle' : state}/frame${idx}.png`;
     }
 
 
