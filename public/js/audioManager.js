@@ -18,6 +18,7 @@ function loadAudio() {
     }
 
     // bg music
+    audio.background.loop = true;
     audio.background.volume = 0.2;
     // running
     audio.sfx.running.p1.loop = true;
