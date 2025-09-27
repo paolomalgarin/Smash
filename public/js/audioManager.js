@@ -14,6 +14,7 @@ function loadAudio() {
                 p1: new Audio('./public/audio/sfx/punch.mp3'),
                 p2: new Audio('./public/audio/sfx/punch.mp3'),
             },
+            fall: new Audio('./public/audio/sfx/fall.mp3'),
         }
     }
 

@@ -29,6 +29,10 @@
     --white: #eee;
     --red: #d14747;
     --blue: #477ed1;
+
+    --light-brown: #ad8b5e;
+    --brown: #8b6636;
+    --dark-brown: #423017;
 }
 
 
@@ -64,10 +68,13 @@ body {
             width: calc(var(--world-width) * var(--wc-unit));
             height: calc(var(--world-height) * var(--wc-unit));
             /* griglia di riferimento su unità di 20 world units (esempio estetico) */
-            background-image:
+            /* background-image:
                 linear-gradient(var(--gray-1) 1px, transparent 1px),
                 linear-gradient(90deg, var(--gray-1) 1px, transparent 1px);
-            background-size: calc(20 * var(--wc-unit)) calc(20 * var(--wc-unit));
+            background-size: calc(20 * var(--wc-unit)) calc(20 * var(--wc-unit)); */
+            background-image: url('../img/ambient/bg.png');
+            background-size: cover;
+            image-rendering: pixelated;
 
             overflow: hidden;
             box-sizing: border-box;
@@ -303,8 +310,8 @@ body {
     .platform {
         transform: translate(-50%, -50%);
 
-        background-color: #4caf50;
-        border: 2px solid #388e3c;
+        background-color: var(--light-brown);
+        border: 2px solid var(--dark-brown);
         border-radius: 4px;
         pointer-events: none;
         z-index: 1;
@@ -313,8 +320,8 @@ body {
     .block {
         transform: translate(-50%, -50%);
 
-        background-color: #265728;
-        border: 2px solid #183d1a;
+        background-color: var(--brown);
+        border: 2px solid var(--dark-brown);
         border-radius: 4px;
         pointer-events: none;
         z-index: 2;

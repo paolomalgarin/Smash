@@ -87,10 +87,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // ========================================================== FASE DI GAME LOOP ==========================================================
     let prevKeys = {};
-    function gameLoop() {
+    async function gameLoop() {
         let last = performance.now();
 
-        function gameLoop(now) {
+        async function gameLoop(now) {
             const dt = Math.min((now - last) / 1000, 0.05);
             last = now;
 
@@ -213,6 +213,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             let isP1Out = isOutOfTheWorld(player1, gameDims);
             let isP2Out = isOutOfTheWorld(player2, gameDims);
             if (isP1Out || isP2Out) {
+                audio.sfx.fall.play();
+
+                await sleep(4000);
+
                 player1.resetToSpawn();
                 player2.resetToSpawn();
             }
@@ -224,6 +228,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     gameLoop();
 
+
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
 
 

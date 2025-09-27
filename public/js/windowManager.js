@@ -65,7 +65,7 @@ function updateScale() {
         // (opzionale): puoi aggiornare anche il background-size a seconda della scala
         if (game) {
             // usa la variabile wc-unit in CSS, ma qui aggiorniamo come fallback diretto
-            game.style.backgroundSize = `calc(20 * var(--wc-unit)) calc(20 * var(--wc-unit))`;
+            // game.style.backgroundSize = `calc(20 * var(--wc-unit)) calc(20 * var(--wc-unit))`;
         }
 
         // debug rapido (togglare in produzione)
