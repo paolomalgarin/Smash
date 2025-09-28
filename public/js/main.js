@@ -67,8 +67,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.log('Special!');
                 break;
             case 'KeyE':
-                console.log('dodge!');
                 player1.dodge();
+                break;
+            case 'Period':
+                player2.dodge();
                 break;
 
             // jump in fondo per permettere attacchi verso l'altro senza saltare
@@ -141,7 +143,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // ================== ROBA PER IL PLAYER 2 ==================
             // controllo se il player sta parando
-            if (isDown('Key.'))
+            if (isDown('Comma'))
                 player2.guard();
             else
                 player2.removeGuard();

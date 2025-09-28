@@ -88,15 +88,17 @@ export default class Platform {
                 player.vy = 0;
             }
         } else if (collision.axis === 'x') {
-            if (collision.direction === -1) {
-                // push left
-                player.x -= p;
-                player.vx = player.vx / -5;
-            } else {
-                // push right
-                player.x += p;
-                player.vx = player.vx / -5;
-            }
+            return; // ignora i lati
+            
+            // if (collision.direction === -1) {
+            //     // push left
+            //     player.x -= p;
+            //     player.vx = player.vx / -5;
+            // } else {
+            //     // push right
+            //     player.x += p;
+            //     player.vx = player.vx / -5;
+            // }
         }
 
         // se la piattaforma può muoversi chiamare this.updateBounds() esternamente

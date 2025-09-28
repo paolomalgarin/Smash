@@ -112,7 +112,7 @@ export default class Player {
         this.y += this.vy * dt;
 
         // stato macchina base: es. uscire da hitstun quando timer finito
-        if (this.guarding) {
+        if (this.timers.invuln > 0 && this.state === 'Dodging') { } else if (this.guarding) {
             this.state = 'Guarding';
         } else if (this.timers.hitstun > 0) {
             this.state = 'Hitstun';
@@ -318,6 +318,12 @@ export default class Player {
         if (this.timers.invuln > 0 || this.timers.hitstun > 0) return;
         this.timers.invuln = 0.32; // invulnerabile 0.32s
         this.timers.dodgeRecovery = 1;
+        this.timers.hitstun = 0.04;
+
+        if (this.onGround)
+            this.x += this.getHurtbox().width * this.facing;
+
+        this.state = 'Dodging';
     }
 
     // applyHit: chiamalo quando una hitbox rileva collisione con il tuo hurtbox
@@ -440,7 +446,7 @@ export default class Player {
     }
 
 
-    preloadAllAnimations(states = ['Idle', 'Moving', 'Jumping', 'Falling', 'AttackingStartup', 'AttackingActive', 'AttackingRecovery', 'Hitstun', 'Invulnerable', 'Guarding', 'KO']) {
+    preloadAllAnimations(states = ['Idle', 'Dodging', 'Moving', 'Jumping', 'Falling', 'AttackingStartup', 'AttackingActive', 'Hitstun', 'Invulnerable', 'Guarding', 'KO']) {
         if (!this.animationFolder) return Promise.resolve();
 
         if (!this.frames) this.frames = {};
