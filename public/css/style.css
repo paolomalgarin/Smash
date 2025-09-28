@@ -310,8 +310,8 @@ body {
     .platform {
         transform: translate(-50%, -50%);
 
-        background-color: var(--light-brown);
-        border: 2px solid var(--dark-brown);
+        background-color: var(--gray-3);
+        border: 2px solid var(--gray-1);
         border-radius: 4px;
         pointer-events: none;
         z-index: 1;
@@ -320,8 +320,8 @@ body {
     .block {
         transform: translate(-50%, -50%);
 
-        background-color: var(--brown);
-        border: 2px solid var(--dark-brown);
+        background-color: var(--gray-1);
+        border: 2px solid var(--black);
         border-radius: 4px;
         pointer-events: none;
         z-index: 2;
