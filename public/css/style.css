@@ -285,7 +285,7 @@ body {
         z-index: 10;
 
         &#player1 {
-            border: 1px solid var(--red);
+            /* border: 1px solid var(--red); */
             background-size: contain;
             background-repeat: no-repeat;
             background-position-x: center;
@@ -294,7 +294,7 @@ body {
         }
 
         &#player2 {
-            border: 1px solid var(--blue);
+            /* border: 1px solid var(--blue); */
             background-size: contain;
             background-repeat: no-repeat;
             background-position-x: center;
@@ -350,8 +350,8 @@ body {
 
 .hurtbox {
     position: absolute;
-    background: rgba(0, 255, 0, 0.3);
-    border: 2px dashed rgba(0, 200, 0, 0.7);
+    /* background: rgba(0, 255, 0, 0.3);
+    border: 2px dashed rgba(0, 200, 0, 0.7); */
     pointer-events: none;
     box-sizing: border-box;
 }

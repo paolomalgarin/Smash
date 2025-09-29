@@ -22,10 +22,10 @@ function loadGame(game, characters) {
     }
     switch (characters.p2) {
         case 'Player':
-            player2 = new Player({ x: game.player2.x, y: game.player2.y, spawnPoint: { x: game.player2.x, y: game.player2.y } });
+            player2 = new Player({ x: game.player2.x, y: game.player2.y, spawnPoint: { x: game.player2.x, y: game.player2.y }, isShiny: true });
             break;
         case 'Alien':
-            player2 = new Alien({ x: game.player2.x, y: game.player2.y, spawnPoint: { x: game.player2.x, y: game.player2.y } });
+            player2 = new Alien({ x: game.player2.x, y: game.player2.y, spawnPoint: { x: game.player2.x, y: game.player2.y }, isShiny: true });
             break;
 
         default: throw new Error("Characters errati in loadGame()!!! [" + characters.p2 + ']');

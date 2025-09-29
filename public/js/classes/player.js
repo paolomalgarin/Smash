@@ -28,6 +28,7 @@ export default class Player {
             // spawnPoint: meglio percentuale rispetto all'arena o world coords
             spawnPoint = { x: x, y: y }, // puoi passare {x:0.15, y:0.9} se usi percentuali
             animationFolder = null,
+            isShiny = false,
         } = opts;
 
         // posizione e velocità
@@ -82,6 +83,7 @@ export default class Player {
 
         // attributi x animazioni
         this.animationFolder = animationFolder;
+        this.isShiny = isShiny;
         this.animationFrame = 0;
 
         this.frames = {};
@@ -442,7 +444,7 @@ export default class Player {
 
         // fallback costruendo il path (utile se non hai precaricato e sai quanti frame ci sono)
         const idx = this.animationFrame;
-        return `./public/img/animations/${this.animationFolder}/${state === 'AttackingRecovery' ? 'Idle' : state}/frame${idx}.png`;
+        return `./public/img/animations/${this.animationFolder}/${state === 'AttackingRecovery' ? 'Idle' : state}/${this.isShiny ? 'alt-' : ''}frame${idx}.png`;
     }
 
 
@@ -475,7 +477,7 @@ export default class Player {
                         }
                         resolve();
                     };
-                    img.src = `./public/img/animations/${this.animationFolder}/${state}/frame${frameIndex}.png`;
+                    img.src = `./public/img/animations/${this.animationFolder}/${state}/${this.isShiny ? 'alt-' : ''}frame${frameIndex}.png`;
                 };
 
                 loadNextFrame();
