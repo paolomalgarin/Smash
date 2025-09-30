@@ -279,8 +279,8 @@ body {
         transform: translate(-50%, -50%);
 
         pointer-events: none;
-        background: #f8e80914;
-        border: 1px solid #f8e80914;
+        /* background: #f8e80914; */
+        /* border: 1px solid #f8e80914; */
         box-sizing: border-box;
         z-index: 10;
 
